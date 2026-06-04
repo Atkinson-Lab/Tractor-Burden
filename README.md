@@ -326,7 +326,8 @@ splice_donor_variant
 
 # Example Workflow
 
-![Tractor-Burden workflow](figures/tractor_burden_workflow.png)
+
+![Tractor-Burden workflow](figures/Figure1_pipeline.png)
 
 ---
 
