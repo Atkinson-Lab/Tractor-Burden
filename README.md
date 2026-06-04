@@ -15,7 +15,11 @@ This framework supports:
 
 ---
 
-## Overview
+# Workflow Overview
+
+
+![Tractor-Burden workflow](figures/Figure1_pipeline.png)
+
 
 For each ancestry, Tractor-Burden:
 
@@ -324,12 +328,6 @@ splice_donor_variant
 
 ---
 
-# Example Workflow
-
-
-![Tractor-Burden workflow](figures/Figure1_pipeline.png)
-
----
 
 # Additional Resources
 
