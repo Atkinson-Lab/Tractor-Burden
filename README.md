@@ -47,13 +47,13 @@ Tab-delimited annotation file containing variant information.
 | POS | Position |
 | REF | Reference allele |
 | ALT | Alternate allele |
-| Annotation column | Functional annotation specified with `--ann-col` |
 
 ### Optional Columns
 
 | Column | Description |
 |----------|-------------|
 | Gene_Name | Gene assignment used for gene-based aggregation |
+| Annotation | Functional annotation specified with `--ann-col` |
 
 ### Example
 
@@ -74,39 +74,36 @@ splice_donor_variant
 stop_gained
 ```
 
----
+## 2. Ancestry-Specific Dosage and Hapcount Files
 
-## 2. Dosage Files
-
-Ancestry-specific dosage files generated from Tractor.
+Tractor-Burden requires ancestry-specific dosage and hapcount files generated from [Tractor extract_tracts.py](https://github.com/Atkinson-Lab/Tractor/blob/master/scripts/extract_tracts.py).
 
 Example:
 
 ```text
 chr1.anc0.dosage.gz
 chr1.anc1.dosage.gz
-```
 
-Each dosage file contains ancestry-specific minor allele dosages.
-
----
-
-## 3. Hapcount Files
-
-Ancestry-specific haplotype count files generated from Tractor.
-
-Example:
-
-```text
 chr1.anc0.hapcount.gz
 chr1.anc1.hapcount.gz
 ```
 
-These are used to calculate ancestry-specific allele frequencies and apply rare variant filters.
 
+Dosage files contain ancestry-specific minor allele dosages for each sample and variant.
+Hapcount files contain the number of ancestry-specific haplotypes carried by each sample at each variant.
+
+### Usage
+
+Files should be supplied in matching order:
+
+```bash
+--ancestry-names EUR AFR \
+--dosage-files chr1.anc0.dosage.gz chr1.anc1.dosage.gz \
+--hapcount-files chr1.anc0.hapcount.gz chr1.anc1.hapcount.gz
+```
 ---
 
-## 4. Phenotype File
+## 3. Phenotype File
 
 Tractor-Burden requires a single tab-delimited phenotype file containing sample IDs, the phenotype column, and any covariates to be included in the association model.
 
@@ -218,8 +215,6 @@ This enables Tractor-Burden analyses beyond coding variation into noncoding and 
 
 Tractor-Burden automatically detects whether the phenotype column `y` is binary or quantitative. Users do **not** need to specify the trait type.
 
-- If `y` contains only `0/1` values, Tractor-Burden runs logistic regression.
-- Otherwise, Tractor-Burden runs linear regression.
 
 ## Example Run
 
@@ -230,11 +225,11 @@ python tractor_burden_final.py \
   --set-file /path/to/regions.refFlat.set \
   --ancestry-names EUR AFR \
   --dosage-files \
-    /path/to/chr19.anc0.dosage.txt.gz \
-    /path/to/chr19.anc1.dosage.txt.gz \
+    /path/to/chr1.anc0.dosage.txt.gz \
+    /path/to/chr1.anc1.dosage.txt.gz \
   --hapcount-files \
-    /path/to/chr19.anc0.hapcount.txt.gz \
-    /path/to/chr19.anc1.hapcount.txt.gz \
+    /path/to/chr1.anc0.hapcount.txt.gz \
+    /path/to/chr1.anc1.hapcount.txt.gz \
   --phenotype-file /path/to/phenotype.tsv \
   --out-tsv /path/to/tractor_burden_results.tsv \
   --keep-annotations \
