@@ -171,10 +171,12 @@ Use a custom region definition file.
 Example:
 
 ```text
-LDLR chr19:11000000-11200000
-APOB chr2:21000000-21200000
+LDLR chr19:11089000-11200000
 ```
-
+or for exonic regions only:
+```text
+LDLR chr19:11089462-11133820,chr19:11089462-11133820,chr19:11089462-11133820,chr19:11089462-11133820,chr19:11089462-11133820
+```
 Run with:
 
 ```bash
