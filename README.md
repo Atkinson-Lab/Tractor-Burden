@@ -37,7 +37,7 @@ For each ancestry, Tractor-Burden:
 
 ## 1. Annotation File
 
-Tab-delimited annotation file containing variant information.
+Tab-delimited annotation file containing variant information. We recommend annotating variants with VEP prior to running Tractor-Burden and filtering to high- and moderate-impact coding consequences (e.g., missense_variant, frameshift_variant, stop_gained, splice_acceptor_variant, splice_donor_variant, and related SnpEff/VEP consequence terms) using the `--keep-annotations` argument.
 
 ### Required Columns
 
@@ -62,16 +62,6 @@ CHROM   POS      REF ALT Gene_Name Annotation
 1       12345    A   G   LDLR      missense_variant
 1       12500    T   C   LDLR      frameshift_variant
 1       13000    G   A   APOB      splice_acceptor_variant
-```
-
-Example annotations:
-
-```text
-missense_variant
-frameshift_variant
-splice_acceptor_variant
-splice_donor_variant
-stop_gained
 ```
 
 ## 2. Ancestry-Specific Dosage and Hapcount Files
