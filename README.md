@@ -242,10 +242,50 @@ python tractor_burden_final.py \
   --min-mac 1 \
   --maf-scope none \
   --covariates global_ancestry_AFR age sex \
-  --chunksize 256
 ```
 
 ---
+## Optional Filtering Parameters
+
+We recommend performing standard rare variant QC before running Tractor-Burden to reduce runtime and memory usage.
+
+### Minimum Minor Allele Count
+
+
+```bash
+--min-mac 1
+```
+
+Minimum alternate allele count required for a variant to be included in burden testing.
+
+**Default:** `1`
+
+---
+
+### Minor Allele Frequency Filtering
+
+
+```bash
+--maf-scope none
+```
+
+Controls how allele frequency filtering is applied.
+
+| Option | Description |
+|----------|-------------|
+| `none` | No MAF filtering (only `--min-mac` is applied) |
+| `ancestry` | Apply MAF filtering separately within each ancestry |
+| `total` | Apply MAF filtering using the aggregate allele frequency across all ancestries |
+
+When using `ancestry` or `total`, frequency thresholds can be specified with:
+
+**Defaults:**
+
+```bash
+--maf-scope none
+--maf-lo 0
+--maf-hi 0.01
+```
 
 ## Output
 
