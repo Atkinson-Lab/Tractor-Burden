@@ -1,6 +1,6 @@
 # Tractor-Burden Tutorial
 
-Tractor-Burden is an ancestry-aware rare variant burden testing framework for admixed populations. Similar to the intuition behind Tractor, Tractor-Burden incorporates local ancestry information into rare variant association testing by aggregating ancestry-specific rare variant dosages within user-defined genomic regions and performing ancestry-specific burden tests.
+Tractor-Burden is an ancestry-aware rare variant burden testing framework for admixed populations. Similar to the intuition behind [Tractor](https://github.com/Atkinson-Lab/Tractor/tree/master), Tractor-Burden incorporates local ancestry information into rare variant association testing by aggregating ancestry-specific rare variant dosages within user-defined genomic regions and performing ancestry-specific burden tests.
 
 This framework supports:
 
