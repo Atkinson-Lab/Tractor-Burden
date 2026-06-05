@@ -294,8 +294,8 @@ Example:
 
 ```text
 chrom  gene      term         estimate      pval        neglog10p  mac  n_carriers  n_variants  m_genes_tested
-19     LDLR      burden_AFR   0.411314      3.51e-07    6.45       134  125         59          2
-19     LDLR      burden_EUR  -0.033425      0.8660      0.062      25   25          24          2
+19     LDLR      burden_AFR   0.411314      3.51e-07    6.45       134  125         59          1256
+19     LDLR      burden_EUR  -0.033425      0.8660      0.062      25   25          24          1256
 ```
 
 ### Output Columns
