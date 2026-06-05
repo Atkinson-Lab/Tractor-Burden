@@ -295,39 +295,6 @@ m_genes_tested
 
 ---
 
-# Recommended Variant Filters
-
-### Protein-Truncating Variants (pLoF)
-
-```text
-frameshift_variant
-stop_gained
-splice_acceptor_variant
-splice_donor_variant
-start_lost
-transcript_ablation
-```
-
-### Damaging Missense Variants
-
-```text
-missense_variant
-```
-
-(optionally filtered by REVEL, CADD, or other pathogenicity scores)
-
-### Combined Coding
-
-```text
-missense_variant
-frameshift_variant
-stop_gained
-splice_acceptor_variant
-splice_donor_variant
-```
-
----
-
 
 # Additional Resources
 
