@@ -168,12 +168,12 @@ Variants assigned to the same gene will be collapsed into a single burden score.
 
 Use a custom region definition file.
 
-Example:
+Example 1:
 
 ```text
 LDLR chr19:11089000-11200000
 ```
-or for exonic regions only:
+Example 2, for exonic regions only:
 ```text
 LDLR chr19:11089462-11133820,chr19:11089462-11133820,chr19:11089462-11133820,chr19:11089462-11133820,chr19:11089462-11133820
 ```
