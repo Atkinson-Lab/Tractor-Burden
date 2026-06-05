@@ -108,55 +108,47 @@ These are used to calculate ancestry-specific allele frequencies and apply rare 
 
 ## 4. Phenotype File
 
-Tab-delimited phenotype file.
+Tractor-Burden requires a single tab-delimited phenotype file containing sample IDs, the phenotype column, and any covariates to be included in the association model.
 
 ### Required Columns
 
 ```text
 IID
-PHENO
+y
 ```
+
+- `IID` must match the sample IDs in the dosage and hapcount files.
+- `y` is the phenotype column.
+  - Binary traits should be coded as 0/1.
+  - Quantitative traits can take continuous values.
+- Tractor-Burden automatically detects whether the phenotype is binary or quantitative based on the values in `y`.
 
 ### Example
 
 ```text
-IID     PHENO
-ID001   1
-ID002   0
-ID003   1
+IID      LDL   age  sex    y      global_ancestry_EUR  global_ancestry_AFR
+1456477  105   86   0   -0.25          0.0846               0.9154
+1601504   59   21   0   -1.57          0.0907               0.9093
+2039502  125   87   0    0.26          0.1306               0.8694
 ```
 
-For quantitative traits:
+### Covariates
 
-```text
-IID     PHENO
-ID001   112.3
-ID002   97.4
-ID003   105.2
+Any additional columns may be used as covariates via the `--covariates` argument.
+
+For example:
+
+```bash
+--covariates global_ancestry_AFR age sex
 ```
 
----
-
-## 5. Covariate File
-
-Tab-delimited covariate file.
-
-Example:
-
-```text
-IID age sex AFR_prop
-ID001 52 1 0.80
-ID002 44 0 0.65
-ID003 61 1 0.92
-```
-
-Typical covariates include:
+Common covariates include:
 
 - age
 - sex
 - global ancestry proportions
-- principal components
-
+- principal components (PCs)
+- study-specific covariates
 ---
 
 # Aggregation Methods
@@ -260,39 +252,36 @@ python tractor_burden_final.py \
 
 ---
 
-# Output
+## Output
 
-The output contains ancestry-specific burden association statistics.
-
+Tractor-Burden produces ancestry-specific burden association statistics for each tested region.
 Example:
 
 ```text
-gene    ancestry    estimate    pval
-LDLR    AFR         0.41        3.5e-07
-LDLR    EUR         0.09        0.11
-APOB    AFR         0.28        1.4e-04
-APOB    EUR         0.05        0.42
+chrom  gene      term         estimate      pval        neglog10p  mac  n_carriers  n_variants  m_genes_tested
+19     LDLR      burden_AFR   0.411314      3.51e-07    6.45       134  125         59          2
+19     LDLR      burden_EUR  -0.033425      0.8660      0.062      25   25          24          2
 ```
 
-Columns:
+### Output Columns
 
 | Column | Description |
 |----------|-------------|
-| gene | Aggregated region |
-| ancestry | Tested ancestry |
-| estimate | Regression coefficient |
-| pval | Association p-value |
+| `chrom` | Chromosome containing the tested region |
+| `gene` | Name of the tested region or set identifier |
+| `term` | Ancestry-specific burden test (`burden_AFR`, `burden_EUR`, etc.) |
+| `estimate` | Regression coefficient for the ancestry-specific burden term |
+| `pval` | Association p-value |
+| `neglog10p` | −log10(p-value) |
+| `mac` | Minor allele count aggregated across all qualifying variants in that ancestry |
+| `n_carriers` | Number of individuals carrying at least one qualifying variant in that ancestry |
+| `n_variants` | Number of variants included in the burden test after annotation and filtering |
+| `m_genes_tested` | Total number of tested regions in the analysis (per chromosome) |
 
-Additional columns may include:
 
-```text
-neglog10p
-mac
-n_carriers
-n_variants
-m_genes_tested
-```
+The `estimate` corresponds to the effect of a one-unit increase in ancestry-specific burden count. For binary traits, this is the logistic regression coefficient (log-odds scale). For quantitative traits, it represents the linear regression effect estimate.
 
+> **Note:** The `gene` column is a generic region identifier and may correspond to genes, pathways, regulatory elements, sliding windows, or any user-defined set supplied through the region definition file.
 ---
 
 
