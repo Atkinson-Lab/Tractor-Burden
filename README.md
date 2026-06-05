@@ -62,7 +62,6 @@ Example:
 ```text
 chr1.anc0.dosage.gz
 chr1.anc1.dosage.gz
-
 chr1.anc0.hapcount.gz
 chr1.anc1.hapcount.gz
 ```
