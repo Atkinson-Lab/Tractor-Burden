@@ -177,17 +177,7 @@ Run with:
 
 # Flexible Region-Based Aggregation
 
-Although Tractor-Burden is commonly used for gene-based rare variant aggregation, the framework can aggregate variants across **any user-defined genomic regions**.
-
-Examples include:
-
-- genes
-- enhancers
-- promoters
-- regulatory elements
-- chromatin interaction regions
-- pathway intervals
-- custom genomic regions
+Although Tractor-Burden is commonly used for gene-based rare variant aggregation, the framework can aggregate variants across **any user-defined genomic regions**. This enables Tractor-Burden analyses beyond coding variation into noncoding and regulatory regions.
 
 Example:
 
@@ -196,8 +186,6 @@ Region1 chr1:100000-150000
 EnhancerA chr2:250000-275000
 CustomWindow chr5:1000000-1100000
 ```
-
-This enables Tractor-Burden analyses beyond coding variation into noncoding and regulatory regions.
 
 ---
 
