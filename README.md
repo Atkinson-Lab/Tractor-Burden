@@ -48,9 +48,9 @@ Tab-delimited annotation file containing variant information. We recommend annot
 
 ```text
 CHROM   POS      REF ALT Gene_Name Annotation
-1       12345    A   G   LDLR      missense_variant
-1       12500    T   C   LDLR      frameshift_variant
-1       13000    G   A   APOB      splice_acceptor_variant
+1       12345    A   G   ARID1A      missense_variant
+1       12500    T   C   ARID1A      frameshift_variant
+1       13000    G   A   CLCNKB      splice_acceptor_variant
 ```
 
 ## 2. Ancestry-Specific Dosage and Hapcount Files
