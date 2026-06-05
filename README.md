@@ -175,7 +175,7 @@ Run with:
 
 ---
 
-# Flexible Region-Based Aggregation
+## Option 3: Flexible Region-Based Aggregation
 
 Although Tractor-Burden is commonly used for gene-based rare variant aggregation, the framework can aggregate variants across **any user-defined genomic regions**. This enables Tractor-Burden analyses beyond coding variation into noncoding and regulatory regions.
 
