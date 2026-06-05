@@ -196,7 +196,6 @@ Examples include:
 - promoters
 - regulatory elements
 - chromatin interaction regions
-- sliding windows
 - pathway intervals
 - custom genomic regions
 
