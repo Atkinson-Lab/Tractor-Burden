@@ -1,4 +1,4 @@
-# ASW chr22 Tractor-Burden Tutorial
+# Tractor-Burden Tutorial
 
 The example dataset used in this tutorial consists of chromosome 22 data from 61 African American (ASW) individuals from the 1000 Genomes Project. These individuals are two-way admixed with African (AFR) and European (EUR) ancestral components. To demonstrate the Tractor-Burden workflow, we generated a simulated quantitative phenotype and accompanying covariates for use in ancestry-specific rare variant burden testing.
 
