@@ -158,8 +158,6 @@ When prioritizing associations, users should evaluate:
 * Number of contributing variants
 * Biological plausibility
 
-This illustrates an important downstream analysis step: burden test results should always be interpreted alongside burden composition metrics.
-
 ---
 
 ## Expected Output
@@ -183,4 +181,3 @@ ASW.rare.anc1.hapcount.txt
 Tractor-Burden
 ```
 
-The resulting analysis produces several ancestry-specific burden associations and illustrates how local ancestry information can be incorporated into rare variant association testing.
