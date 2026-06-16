@@ -41,7 +41,8 @@ Use Tractor's `extract_tracts.py` script to assign local ancestry labels to rare
 python extract_tracts.py \
     --vcf ASW.rare.vcf.gz \
     --msp ASW.deconvoluted.msp.tsv \
-    --out ASW.rare
+    --num-ancs 2 \
+    --output-dir .
 ```
 
 The MSP file was generated using common variants during local ancestry inference. Rare variants are assigned ancestry labels based on the ancestry tract in which they reside.
