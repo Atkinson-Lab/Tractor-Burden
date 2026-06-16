@@ -102,12 +102,12 @@ python tractor_burden.py \
     --set-file chr22.refFlat.set \
     --ancestry-names AFR EUR \
     --dosage-files \
-        ASW.rare.AFR_dosage.tsv \
-        ASW.rare.EUR_dosage.tsv \
+        ASW.rare.anc0.dosage.txt \
+        ASW.rare.anc1.dosage.txt \
     --hapcount-files \
-        ASW.rare.AFR_hapcount.tsv \
-        ASW.rare.EUR_hapcount.tsv \
-    --phenotype-file ASW.pheno.covars.tsv \
+        ASW.rare.anc0.hapcount.txt \
+        ASW.rare.anc1.hapcount.txt \
+    --phenotype-file ASW.pheno_covars.tsv \
     --covariates AFR sex \
     --maf-scope none \
     --min-mac 1 \
@@ -126,18 +126,18 @@ head ASW.results.tsv
 
 The output contains:
 
-| Column         | Description                                   |
-| -------------- | --------------------------------------------- |
-| chrom          | Chromosome                                    |
-| gene           | Gene or region tested                         |
-| term           | Ancestry-specific burden term                 |
-| estimate       | Effect estimate                               |
-| pval           | Association p-value                           |
-| neglog10p      | −log10(p-value)                               |
-| mac            | Minor allele count                            |
-| n_carriers     | Number of carriers                            |
-| n_variants     | Number of variants contributing to the burden |
-| m_genes_tested | Number of genes tested for that ancestry      |
+| Column         | Description                                       |
+| -------------- | --------------------------------------------------|
+| chrom          | Chromosome                                        |
+| gene           | Gene or region tested                             |
+| term           | Ancestry-specific burden term                     |
+| estimate       | Effect estimate                                   |
+| pval           | Association p-value                               |
+| neglog10p      | −log10(p-value)                                   |
+| mac            | Minor allele count                                |
+| n_carriers     | Number of carriers                                |
+| n_variants     | Number of variants contributing to the burden     |
+| m_genes_tested | Number of genes tested for that ancestry per chr  |
 
 ---
 
@@ -167,17 +167,18 @@ This tutorial demonstrates the complete Tractor-Burden workflow:
 ```text
 ASW.phased.vcf.gz
         ↓
-Filter rare variants
+bcftools MAF filter for rare variants
         ↓
 ASW.rare.vcf.gz
         ↓
 extract_tracts.py
         ↓
-AFR/EUR dosage and hapcount files
+ASW.rare.anc0.dosage.txt
+ASW.rare.anc1.dosage.txt
+ASW.rare.anc0.hapcount.txt
+ASW.rare.anc1.hapcount.txt
         ↓
 Tractor-Burden
-        ↓
-Ancestry-specific burden associations
 ```
 
 The resulting analysis produces several ancestry-specific burden associations and illustrates how local ancestry information can be incorporated into rare variant association testing.
