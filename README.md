@@ -48,9 +48,9 @@ Tab-delimited annotation file containing variant information. We recommend annot
 
 ```text
 CHROM   POS      REF ALT Gene_Name Annotation
-1       12345    A   G   ARID1A      missense_variant
-1       12500    T   C   ARID1A      frameshift_variant
-1       13000    G   A   CLCNKB      splice_acceptor_variant
+1       12345    A   G   Gene_A      missense_variant
+1       12500    T   C   Gene_A      frameshift_variant
+1       13000    G   A   Gene_B      splice_acceptor_variant
 ```
 
 ## 2. Ancestry-Specific Dosage and Hapcount Files
@@ -60,10 +60,10 @@ Tractor-Burden requires ancestry-specific dosage and hapcount files generated fr
 Example:
 
 ```text
-chr1.anc0.dosage.gz
-chr1.anc1.dosage.gz
-chr1.anc0.hapcount.gz
-chr1.anc1.hapcount.gz
+chr1.anc0.dosage.txt
+chr1.anc1.dosage.txt
+chr1.anc0.hapcount.txt
+chr1.anc1.hapcount.txt
 ```
 
 
@@ -76,8 +76,8 @@ Files should be supplied in matching order:
 
 ```bash
 --ancestry-names EUR AFR \
---dosage-files chr1.anc0.dosage.gz chr1.anc1.dosage.gz \
---hapcount-files chr1.anc0.hapcount.gz chr1.anc1.hapcount.gz
+--dosage-files chr1.ancEUR.dosage.gz chr1.ancAFR.dosage.gz \
+--hapcount-files chr1.ancEUR.hapcount.gz chr1.ancAFR.hapcount.gz
 ```
 ---
 
@@ -291,7 +291,7 @@ The `estimate` corresponds to the effect of a one-unit increase in ancestry-spec
 
 ## Tutorial
 
-A step-by-step walkthrough using publicly available chromosome 22 ASW samples from the Tractor tutorial is available here:
+A step-by-step walkthrough using publicly available 2-way African/African American (ASW) samples from the [Thousand Genome Project](https://www.internationalgenome.org/) is available here:
 
 **[ASW Chromosome 22 Tutorial](tutorials/ASW_chr22_tutorial.md)**
 
