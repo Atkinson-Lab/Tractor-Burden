@@ -293,7 +293,7 @@ The `estimate` corresponds to the effect of a one-unit increase in ancestry-spec
 
 A step-by-step walkthrough using publicly available 2-way African/African American (ASW) samples from the [Thousand Genome Project](https://www.internationalgenome.org/) is available here:
 
-**[Tractor-Burden Tutorial](tutorial info/Tractor-BurdenTutorial.md)**
+**[Tractor-Burden Tutorial](tutorial%20info/Tractor-BurdenTutorial.md)**
 
 
 For detailed explanations of phasing, local ancestry painting, and extracting tracts, refer to:
