@@ -1,10 +1,12 @@
 # ASW chr22 Tractor-Burden Tutorial
 
-This tutorial demonstrates how to run Tractor-Burden on publicly available chromosome 22 ASW samples from the Tractor tutorial. The workflow uses local ancestry tracts inferred by RFMix and projects ancestry labels onto rare variants before performing ancestry-specific burden testing.
+The example dataset used in this tutorial consists of chromosome 22 data from 61 African American (ASW) individuals from the 1000 Genomes Project. These individuals are two-way admixed with African (AFR) and European (EUR) ancestral components. To demonstrate the Tractor-Burden workflow, we generated a simulated quantitative phenotype and accompanying covariates for use in ancestry-specific rare variant burden testing.
+
+The phased genotype data and local ancestry inference (LAI) outputs used in this tutorial were obtained from the public [Tractor tutorial](https://github.com/Atkinson-Lab/Tractor-tutorial/blob/main/Rfmix.md). Local ancestry tracts were inferred using RFMix and are provided as MSP files, which are subsequently used to assign ancestry labels to rare variants prior to burden testing.
 
 ## Required Files
 
-Download the following files:
+Download and unzip this example dataset to follow along the tutorial.
 
 ```text
 ASW.phased.vcf.gz
