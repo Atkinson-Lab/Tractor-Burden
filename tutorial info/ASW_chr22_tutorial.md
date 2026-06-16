@@ -56,11 +56,11 @@ Convert the Tractor outputs into Tractor-Burden dosage and hapcount files.
 Final files used by Tractor-Burden:
 
 ```text
-ASW.rare.AFR_dosage.tsv
-ASW.rare.EUR_dosage.tsv
+ASW.rare.anc0.dosage.txt
+ASW.rare.anc1.dosage.txt
 
-ASW.rare.AFR_hapcount.tsv
-ASW.rare.EUR_hapcount.tsv
+ASW.rare.anc0.hapcount.txt
+ASW.rare.anc1.hapcount.txt
 ```
 
 Each file contains:
