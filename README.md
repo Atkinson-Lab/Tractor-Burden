@@ -289,6 +289,13 @@ The `estimate` corresponds to the effect of a one-unit increase in ancestry-spec
 
 # Additional Resources
 
+## Tutorial
+
+A step-by-step walkthrough using publicly available chromosome 22 ASW samples from the Tractor tutorial is available here:
+
+📖 **[ASW Chromosome 22 Tutorial](tutorials/ASW_chr22_tutorial.md)**
+
+
 For detailed explanations of phasing, local ancestry painting, and extracting tracts, refer to:
 
 **[Tractor Tutorial](https://github.com/Atkinson-Lab/Tractor-tutorial/tree/main)**
