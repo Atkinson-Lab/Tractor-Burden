@@ -406,8 +406,8 @@ def run_regression(y, X):
 def parse_args():
     p = argparse.ArgumentParser()
 
-    p.add_argument("--annotation-file", required=True)
-    p.add_argument("--ann-col", required=True)
+    p.add_argument("--annotation-file", default=None)
+    p.add_argument("--ann-col", default=None)
     p.add_argument("--set-file", default=None, help="Optional RVTESTS-style refFlat.set gene boundary file.")
 
     p.add_argument("--ancestry-names", nargs="+", required=True)
@@ -463,12 +463,66 @@ def main():
 
     logger.info(f"Phenotype rows usable for model: {len(pheno_model):,}")
 
-    v2g, gene_chrom = load_annotation(
-        annotation_file=args.annotation_file,
-        ann_col=args.ann_col,
-        keep_annotations=args.keep_annotations,
-        set_file=args.set_file,
-    )
+    if args.annotation_file is not None:
+
+        if args.ann_col is None:
+            raise SystemExit("--ann-col must be provided when using --annotation-file")
+
+        v2g, gene_chrom = load_annotation(
+            annotation_file=args.annotation_file,
+            ann_col=args.ann_col,
+            keep_annotations=args.keep_annotations,
+            set_file=args.set_file,
+        )
+
+    else:
+        logger.info("No annotation file supplied. Using set-file only.")
+
+        if args.set_file is None:
+            raise SystemExit(
+                "Must provide either --annotation-file or --set-file"
+            )
+
+        intervals_by_chrom, gene_chrom = load_set_file(args.set_file)
+
+        # Build variant→gene mapping directly from dosage file
+        v2g = defaultdict(set)
+
+        first_dosage = args.dosage_files[0]
+
+        for chunk in pd.read_csv(
+            first_dosage,
+            sep="\t",
+            dtype=str,
+            chunksize=args.chunksize
+        ):
+
+            chunk = normalize_variant_df(chunk)
+
+            for _, r in chunk[ID_COLS].iterrows():
+
+                chrom = norm_chrom(r["CHROM"])
+                pos = int(r["POS"])
+
+                key = (
+                    chrom,
+                    pos,
+                    str(r["REF"]).strip(),
+                    str(r["ALT"]).strip()
+                )
+
+                genes = genes_for_position(
+                    chrom,
+                    pos,
+                    intervals_by_chrom
+                )
+
+                for gene in genes:
+                    v2g[key].add(gene)
+
+        logger.info(
+            f"Assigned {len(v2g):,} variants using set-file only."
+        )
 
     total_keep = None
     if args.maf_scope == "total":
