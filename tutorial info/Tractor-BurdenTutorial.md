@@ -37,10 +37,17 @@ This file will contain only rare variants and serves as the input for ancestry p
 
 ## Step 2: Extract Ancestry-Specific Rare Variant Dosages
 
-Use Tractor's `extract_tracts.py` script to assign local ancestry labels to rare variants using the RFMix MSP file.
+Use Tractor's `extract_tracts.py` script to assign local ancestry labels to rare variants using the RFMix MSP file. 
+> **Note:** This script requires Python 3. If your environment defaults to Python 2, you may encounter syntax errors. Verify your Python version before proceeding:
 
 ```bash
-python extract_tracts.py \
+python3 --version
+```
+
+Then run:
+
+```bash
+python3 extract_tracts.py \
     --vcf ASW.rare.vcf.gz \
     --msp ASW.deconvoluted.msp.tsv \
     --num-ancs 2 \
@@ -96,7 +103,29 @@ with the following columns:
 The phenotype is simulated for demonstration purposes and is not intended to represent a real biological trait.
 
 ---
+## Software Requirements
 
+Before running Tractor-Burden, we recommend creating a dedicated Conda environment with the required Python packages. This helps avoid `ModuleNotFoundError` issues on shared computing clusters where packages such as `numpy`, `pandas`, `scipy`, or `statsmodels` may not be installed by default.
+
+```bash
+conda create -n tractor-burden python=3.12 numpy pandas scipy statsmodels -y
+conda activate tractor-burden
+```
+
+If you are working on an HPC or shared server, you may need to load Conda or Anaconda first. For example:
+
+```bash
+module load anaconda3
+conda activate tractor-burden
+```
+
+You can confirm that the required packages are available by running:
+
+```bash
+python -c "import numpy, pandas, scipy, statsmodels; print('All required packages loaded successfully')"
+```
+
+After activating the `tractor-burden` Conda environment:
 ## Step 5: Run Tractor-Burden
 
 ```bash
