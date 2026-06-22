@@ -19,9 +19,11 @@ tractor_burden.py
 
 ## Step 1: Create a Rare Variant VCF
 
-Filter the phased VCF to variants with MAF ≤ 1%.
+Index the phased VCF, then filter to variants with MAF ≤ 1%, and then index the resulting rare variant VCF.
 
 ```bash
+tabix -p vcf ASW.phased.vcf.gz
+
 bcftools view \
     -i 'MAF<=0.01' \
     ASW.phased.vcf.gz \
