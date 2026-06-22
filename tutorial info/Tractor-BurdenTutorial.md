@@ -4,6 +4,18 @@ The example dataset used in this tutorial consists of chromosome 22 data from 61
 
 The phased genotype data and local ancestry inference (LAI) outputs used in this tutorial were obtained from the public [Tractor tutorial](https://github.com/Atkinson-Lab/Tractor-tutorial/blob/main/Rfmix.md). Local ancestry tracts were inferred using RFMix and are provided as MSP files, which are subsequently used to assign ancestry labels to rare variants prior to burden testing.
 
+### Prerequisites
+
+This tutorial assumes the following software is installed and available in your PATH:
+
+- bcftools
+- tabix
+- Python 3
+- numpy
+- pandas
+- scipy
+- statsmodels
+  
 ## Required Files
 
 Download and unzip this example dataset to follow along the tutorial.
