@@ -250,8 +250,22 @@ for term in df["term"].unique():
         sig_threshold,
         linestyle="--",
         linewidth=1,
+        color="red",
         label=f"Bonferroni (0.05/{int(n_genes_tested)})"
     )
+
+    # Label significant genes
+    sig = sub[sub["neglog10p"] >= sig_threshold]
+
+    for _, row in sig.iterrows():
+        plt.text(
+            row["position_mb"],
+            row["neglog10p"] + 0.15,
+            row["gene"],
+            fontsize=8,
+            ha="center",
+            va="bottom"
+        )
 
     plt.xlabel("Chromosome 22 Position (Mb)")
     plt.ylabel("-log10(P)")
